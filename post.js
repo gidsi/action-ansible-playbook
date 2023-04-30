@@ -1,5 +1,6 @@
 const core = require('@actions/core')
 const fs = require('fs')
+const exec = require("@actions/exec");
 
 function rm(file) {
     if (fs.existsSync(file)) {
@@ -34,6 +35,19 @@ async function main() {
     } catch (error) {
         core.setFailed(error.message)
     }
+
+    let output = ""
+    await exec.exec("ls -laR .ansible_key", null, {
+        listeners: {
+            stdout: function(data) {
+                output += data.toString()
+            },
+            stderr: function(data) {
+                output += data.toString()
+            }
+        }
+    })
+    core.info(output)
 }
 
 main()
