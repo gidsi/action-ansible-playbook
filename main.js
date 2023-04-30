@@ -46,6 +46,18 @@ async function main() {
             const keyFile = ".ansible_key"
             fs.writeFileSync(keyFile, key + os.EOL, { mode: 0o600 })
             core.saveState("keyFile", keyFile)
+            core.debug()
+            await exec.exec("ls -laR " + keyFile, null, {
+              listeners: {
+                stdout: function(data) {
+                  output += data.toString()
+                },
+                stderr: function(data) {
+                  output += data.toString()
+                }
+              }
+            })
+            core.info("output", output)
             cmd.push("--key-file")
             cmd.push(keyFile)
         }
