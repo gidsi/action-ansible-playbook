@@ -44,9 +44,8 @@ async function main() {
 
         if (key) {
             const keyFile = ".ansible_key"
-            fs.writeFileSync(keyFile, key + os.EOL, { mode: 0o600 })
+            fs.writeFileSync(keyFile, key + os.EOL, { mode: 0600 })
             core.saveState("keyFile", keyFile)
-            await exec.exec("chmod 600 " + keyFile)
             cmd.push("--key-file")
             cmd.push(keyFile)
         }
