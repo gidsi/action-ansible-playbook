@@ -45,6 +45,7 @@ async function main() {
         if (key) {
             const keyFile = ".ansible_key"
             let output = ""
+            await exec.exec("rm -rf " + keyFile, null, {})
             await exec.exec("ls -laR " + keyFile, null, {
                 listeners: {
                     stdout: function(data) {
