@@ -44,6 +44,10 @@ async function main() {
 
         if (key) {
             const keyFile = ".ansible_key"
+            if (fs.existsSync(keyFile)) {
+                core.info(`Deleting "${keyFile}" file`)
+                fs.unlinkSync(keyFile)
+            }
             fs.writeFileSync(keyFile, key + os.EOL, { mode: fs.constants.S_IRWXU })
             core.saveState("keyFile", keyFile)
             cmd.push("--key-file")
