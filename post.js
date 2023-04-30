@@ -10,25 +10,25 @@ function rm(file) {
 
 async function main() {
     try {
-        const directory = core.getState("directory")
+        /*const directory = core.getState("directory")
         const keyFile = core.getState("keyFile")
         const inventoryFile = core.getState("inventoryFile")
         const vaultPasswordFile = core.getState("vaultPasswordFile")
-        const knownHostsFile = core.getState("knownHostsFile")
+        const knownHostsFile = core.getState("knownHostsFile")*/
 
-        if (directory)
+        // if (directory)
             process.chdir(directory)
 
-        if (keyFile)
+        // if (keyFile)
             rm(keyFile)
 
-        if (inventoryFile)
+        // if (inventoryFile)
             rm(inventoryFile)
 
-        if (vaultPasswordFile)
+        // if (vaultPasswordFile)
             rm(vaultPasswordFile)
 
-        if (knownHostsFile)
+        // if (knownHostsFile)
             rm(knownHostsFile)
 
     } catch (error) {
