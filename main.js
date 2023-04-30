@@ -44,7 +44,7 @@ async function main() {
 
         if (key) {
             const keyFile = ".ansible_key"
-            fs.writeFileSync(keyFile, key + os.EOL, { mode: 0600 })
+            fs.writeFileSync(keyFile, key + os.EOL, { mode: fs.constants.S_IRWXU })
             core.saveState("keyFile", keyFile)
             cmd.push("--key-file")
             cmd.push(keyFile)
