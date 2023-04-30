@@ -44,9 +44,6 @@ async function main() {
 
         if (key) {
             const keyFile = ".ansible_key"
-            let output = ""
-            await exec.exec("rm -rf " + keyFile, null, {})
-            core.info(output)
             fs.writeFileSync(keyFile, key + os.EOL, { mode: fs.constants.S_IRWXU })
             core.saveState("keyFile", keyFile)
             cmd.push("--key-file")
